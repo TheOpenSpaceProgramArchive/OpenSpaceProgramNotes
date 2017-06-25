@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+    <defs>
+        <clipPath id="badge">
+            <circle cx="512" cy="512" r="512" />
+        </clipPath>
+        <mask id="shadow-clip">
+            <rect x="0" y="0" width="1024" height="1024" fill="#ffffff" />
+            <circle cx="512" cy="480" r="512" fill="#000000" />
+        </mask>
+        <font id="league_spartanregular" horiz-adv-x="683" >
+            <font-face font-family="League Spartan" font-weight="bold" units-per-em="1000" ascent="750" descent="-250" />
+            <glyph unicode="O" horiz-adv-x="877" d="M23 413q0 179 122 303t294 124q173 0 294 -123.5t121 -303.5q0 -181 -119 -304.5t-296 -123.5q-181 0 -298.5 122.5t-117.5 305.5zM226 413q0 -65 20 -118.5t70 -90.5t123 -37q105 0 158.5 72t53.5 174q0 101 -54.5 173.5t-157.5 72.5q-102 0 -157.5 -72.5t-55.5 -173.5z " />
+            <glyph unicode="S" horiz-adv-x="672" d="M364 840q67 0 131 -19.5t95 -38.5l30 -20l-76 -150q-9 6 -25 15.5t-60 25.5t-82 16q-47 0 -72.5 -20t-25.5 -54q0 -17 12 -31.5t41 -31t51 -26.5t68 -30q80 -34 136.5 -92.5t56.5 -132.5q0 -71 -25.5 -124t-70 -83t-98.5 -44.5t-117 -14.5q-54 0 -106 11t-87 27.5 t-63 32.5t-41 27l-13 11l94 158q12 -10 33 -25.5t74.5 -41.5t94.5 -26q119 0 119 81q0 17 -8.5 31.5t-30 29t-38 23t-54 26t-55.5 26.5q-75 37 -116 92.5t-41 119.5q0 111 82 181.5t187 70.5z" />
+            <glyph unicode="P" horiz-adv-x="666" d="M60 825h301q126 0 204 -65t78 -189t-79 -194.5t-203 -70.5h-113v-306h-188v825zM248 456h53q63 0 103.5 25.5t40.5 83.5q0 59 -40.5 84.5t-103.5 25.5h-53v-219z" />
+        </font>
+    </defs>
+    <circle cx="512" cy="512" r="512" fill="#0277bd" />
+    <path d="M368 768 Q320 1024, 0 1024 H1024 Q704 1024, 656 768 V640 H368 Z" fill="#ffe0b2" clip-path="url(#badge)" />
+    <path d="M464 768 Q448 1024, 320 1024 H704 Q576 1024, 560 768 Z" fill="#ff9800" clip-path="url(#badge)" />
+    <path d="M512 64 l-96 160 v160 l-32 -96 l-32 96 v320 h16 l-16 64 h64 l-16 -64 h16 v-64 l32 32 h32 l-32 96 h128 l-32 -96 h32 l32 -32 v64 h16 l-16 64 h64 l-16 -64 h16 v-320 l-32 -96 l-32 96 v-160 Z" fill="#bdbdbd" />
+    <text x="512" y="327" font-family="League Spartan" font-weight="bold" font-size="144" fill="#212121" text-anchor="middle">O</text>
+    <text x="512" y="489" font-family="League Spartan" font-weight="bold" font-size="144" fill="#212121" text-anchor="middle">S</text>
+    <text x="512" y="649" font-family="League Spartan" font-weight="bold" font-size="144" fill="#212121" text-anchor="middle">P</text>
+    <circle cx="512" cy="512" r="512" fill="rgba(0, 0, 0, 0.3)" mask="url(#shadow-clip)" />
+</svg>
