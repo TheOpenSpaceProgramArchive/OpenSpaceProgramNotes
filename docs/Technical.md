@@ -62,23 +62,25 @@ How the craft itself is represented depends on the game engine, but in general, 
 ## Classes (Brief)
 
 
+### Universe:
+
 * **Satellite**
 
    Base class for an object in the universe. Has position, mass, a `Trajectory`, a parent `Satellite`, and children `Satellite`s.
 
-   * **AstronomicalBody (Inherits Satellite)**
-
-      Describes a planet, moon, or star and has many tweakable properties
-
-   * **ActiveArea (Inherits Satellite)**
+   * **ActiveArea (Inherits / component of Satellite)**
 
       Contain the game scene with physics enabled, and loads/unloads `Satellite`s around it into their game engine representations.
 
-   * **Vehicle (Inherits Satellite)**
+   * **AstronomicalBody (Inherits / component of Satellite)**
+
+      Describes a planet, moon, or star and has many tweakable properties
+
+   * **Vehicle (Inherits / component of Satellite)**
    
       Wraps game engine objects into a `Satellite`, including the player's Craft and its arrangement of `Part`s.
       
-   * **ReferenceFrame (Inherits Satellite)**
+   * **ReferenceFrame (Inherits / component of Satellite)**
    
       Virtual point in space used for barycenters, markers, and various other purposes.
 
@@ -106,10 +108,27 @@ How the craft itself is represented depends on the game engine, but in general, 
 
    *List more ideas here*
 
-* **Part**
+### Vehicles & Parts:
 
-   A game engine object, objects, or component that can contain OSP-specific information and `Machine`s.
+* **PartPrototype**
+
+   Unique data describing a Part: `Machine`s used, models, textures, transformations, etc... Direct result of loading a file.
+
+* **PartBlueprint**
+
+   Disposable representation of a `PartPrototype`. Contains tweaked options and is arranged into `CraftBlueprint`s
+
+* **PartPhysical**
+
+   A game engine object loaded in an `ActiveArea` with working `Machine`s and everything.
+
+* **VehicleBlueprint**
+
+   An arrangement of `PartBlueprint`s and a list of structual connections between them. Usually created by the player.
    
+* **VehiclePhysical**
+
+   A group of `PartPhysical`s
 
 * **Machine**
 
@@ -136,6 +155,8 @@ How the craft itself is represented depends on the game engine, but in general, 
 * **WireInput**
 
    Used by a `Machine` to read data from another `Machine` by connecting to one of its its `WireOutput`.
+
+*TODO: think about how to properly handle dynamic parts: fairings, hinges, extendable parts, etc... *
 
 *List more ideas here*
 
@@ -241,10 +262,6 @@ For an example of how this system might work, let's say a player is landed on th
 
 When the player takes off from the moon, the ActiveArea handles the physics up to orbit. The player exits to the menu again, unloading the craft. The craft is then automatically assigned a KeplerOrbitTrajectory set by configs.
 
-
-## Crafts
-
-TODO
 
 ### Machines
 
