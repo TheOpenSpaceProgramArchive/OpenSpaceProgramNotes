@@ -12,7 +12,7 @@ TODO: need some diagrams, review, and a more writing
 
 - [Introduction](#introduction)
 - [Overview](#overview)
-  * [Classes (Brief)](#classes--brief-)
+  * [Possible Classes](#possible-classes)
   * [Universe](#universe)
     + [Coordinates](#coordinates)
     + [Active Physics Areas](#active-physics-areas)
@@ -54,19 +54,21 @@ At it's core, OSP needs to simulate objects in space and their interactions with
 How the craft itself is represented depends on the game engine, but in general, is a collection of `Part`s. Functionality of these parts come from their `Machine` components. For example, adding a "rocket machine component" to a paperweight part makes it into a functioning rocket. There is also a wiring system that allows parts to control each other.
 
 
-**Implications**
+**Other Implications**
 
 * OSP can also be used as a base for other space-related games.
 
+## Possible Classes
 
-## Classes (Brief)
-
+An OSP implementation should kind of be structured like this, not that it has to.
 
 ### Universe:
 
 * **Satellite**
 
-   Base class for an object in the universe. Has position, mass, a `Trajectory`, a parent `Satellite`, and children `Satellite`s.
+   Base class for an object in the universe. Has properties such as position, mass, a `Trajectory`, a parent `Satellite`, and children `Satellite`s.
+   
+   Note: Maybe a good idea to not have parenting, and rely only on Trajectories.
 
    * **ActiveArea (Inherits / component of Satellite)**
 
@@ -181,7 +183,11 @@ In the real world, our solar system is 4.5 billion kilometers in radius,
 
 Using floating points, Precision will decrease as distance from the origin increases. At ±16,777,216 units, 32-bit floats will no longer be able to represent odd integers. Floats work best when they're close to zero, which is wasted as zero is the insides of a planet.
 
-**Solution**
+TODO: Think about more stuff, maybe some octree or something n-body friendly.
+
+**Solution A**
+
+Note: this might be a bad idea
 
 Why not make a coordinate system that can scale down to the quantum level, but also be able to span lightyears? Well this is a working solution, I guess.
 
@@ -208,9 +214,6 @@ Satellites control the precision of their children's coordinates, or how many 64
 | 4           | 1/16               |
 | .. 10       | 1/1024             |
 
-
-Implications:
-
 * Relative coordinates between Satellites can be calculated through finding a common ancestor.
 * Satellites like the player's Vehicle, can change parents to nearby objects, switching to a different coordinate system, which works nicely for patched conics.
 
@@ -235,9 +238,9 @@ The ActiveArea should also load previews of distant objects, such as rendering p
 The (0, 0, 0) position of the ActiveArea's internal game scene, corresponds to the center of the Satellite in the OSP universe.
 ActiveArea keeps units of its Scene in meters, regardless of any precision values.
 
-**Implications**
+**Other Implications**
 
-* There can be multiple active areas, aside from supporting distant objects having active physics, it is essential for multiplayer.
+* There can be multiple active areas, aside from supporting distant objects having active physics. It is essential for multiplayer servers, and would allow ideas like SpaceX-style landing boosters.
 
 ### Trajectory
 
